@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Card for Tolani</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #ff69b4, #ff1493, #ff69b4);
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+        
+        .card-container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 500px;
+            animation: slideIn 0.8s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        h1 {
+            color: #ff1493;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+        
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        .heart {
+            font-size: 3em;
+            margin: 20px 0;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        p {
+            color: #333;
+            font-size: 1.1em;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .button-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        button {
+            padding: 12px 30px;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+        
+        #yes-button {
+            background-color: #ff1493;
+            color: white;
+            padding: 15px 40px;
+            font-size: 1.2em;
+        }
+        
+        #yes-button:hover {
+            background-color: #ff69b4;
+            transform: scale(1.1);
+        }
+        
+        #no-button {
+            background-color: #ccc;
+            color: #333;
+            position: absolute;
+        }
+        
+        #no-button:hover {
+            cursor: not-allowed;
+        }
+        
+        #emergency-notice {
+            display: none;
+            background-color: #ff1493;
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            font-size: 1.2em;
+            line-height: 1.8;
+            animation: shake 0.5s ease-in-out;
+            margin-top: 20px;
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+        
+        .siren {
+            font-size: 2em;
+            margin-bottom: 10px;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="card-container">
+        <div class="heart">💕</div>
+        <h1>Tolani, Will You Be My Valentine?</h1>
+        <p>I really like you and would love to spend Valentine's Day with you!</p>
+        
+        <div class="button-container">
+            <button id="yes-button">Yes! 💕</button>
+            <button id="no-button">No</button>
+        </div>
+        
+        <div id="emergency-notice">
+            <div class="siren">🚨</div>
+            <strong>EMERGENCY NOTICE!</strong>
+            <p style="margin-top: 15px;">Due to shortage of boyfriends in your area, the government has assigned me as your Valentine. No appeal allowed. Please cooperate. I need to help your life 😂</p>
+        </div>
+    </div>
+
+    <script>
+        const noButton = document.getElementById('no-button');
+        const yesButton = document.getElementById('yes-button');
+        const emergencyNotice = document.getElementById('emergency-notice');
+        
+        noButton.addEventListener('mouseover', function() {
+            const randomX = (Math.random() - 0.5) * 300;
+            const randomY = (Math.random() - 0.5) * 300;
+            noButton.style.transform = 'translate(' + randomX + 'px, ' + randomY + 'px)';
+        });
+        
+        yesButton.addEventListener('click', function() {
+            emergencyNotice.style.display = 'block';
+            noButton.style.display = 'none';
+            yesButton.disabled = true;
+            yesButton.style.opacity = '0.5';
+        });
+    </script>
+</body>
+</html>
